@@ -1,0 +1,24 @@
+#Node
+node_modules/
+package-lock.json
+package.json
+
+#idea
+*.idea
+.idea
+/shelf/
+/workspace.xml
+
+#vscode
+.DS_Store
+.vscode/
+
+# Environments and Settings
+.local
+
+# Reports and Logs
+*.log
+allure-results/
+output/
+log*.html
+report*.html
