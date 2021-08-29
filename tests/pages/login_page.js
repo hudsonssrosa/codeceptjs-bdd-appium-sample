@@ -9,9 +9,10 @@ class LoginPage {
     lblErrorMessage: '#com.dgotlieb.automationsample:id/errorTV'
   }
 
-  async openApp() {
-    // I.seeAppIsInstalled()
-    // I.runOnAndroid()
+  async openApp(appName) {
+    I.runOnAndroid({platformVersion: '11.0'},() => {
+      I.seeAppIsInstalled(appName);
+    })
   }
 
   async typeInputUsername(input) {

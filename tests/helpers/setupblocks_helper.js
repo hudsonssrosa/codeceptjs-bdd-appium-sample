@@ -20,6 +20,7 @@ class SetupBlocks extends Helper {
    */
   _finishTest() {
     execSync('allure serve output', utf8);
+    execSync("kill -9 `lsof -i TCP:\"4723\" | awk '/LISTEN/{print $2}'`", utf8);
   }
 
   // use: this.helpers['helperName']

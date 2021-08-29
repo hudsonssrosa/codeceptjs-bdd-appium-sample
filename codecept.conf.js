@@ -1,58 +1,47 @@
-// const { setHeadlessWhen } = require('@codeceptjs/configure');
+const { setHeadlessWhen } = require('@codeceptjs/configure');
+
 // setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
+  name: 'codeceptjs-bdd-appium-sample',
   tests: './tests/*test.js',
   output: './output',
-  timeout: 10000,
-  name: 'codeceptjs-bdd-appium-sample',
-  hooks: [],
   bootstrap: null,
-
+  timeout: 10000,
   helpers: {
-    // Playwright: {
-    //   url: 'http://localhost',
-    //   show: true, // Set as true to show the tests in browser (without headless)
-    //   browser: 'firefox', // chromium is presenting flaky tests when interacting with video streaming pages
-    //   waitForNavigation: "networkidle0"
-    // },
     // Appium: {
-    //   app: "./app_distribution/Sample.apk",
-    //   platform: "Android",
-    //   smartWait: 20000,
-    //   desiredCapabilities: {
-    //     platformName: "Android",
-    //     platformVersion: "11.0",
-    //     deviceName: "R58N52FV01T",
-    //     waitForTimeout: 20000,
-    //     automationName: "UIAutomator2",
-    //     autoGrantPermissions: true,
-    //     noReset: false,
-    //     adbExecTimeout: 120000,
-    //     noSign: true
+    //   app: '/Users/hudsonssrosa/git_projects/codeceptjs-bdd-appium-sample/app_distribution/Sample.apk',
+    //   platform: 'Android',
+    //   platformName: 'Android',
+    //   platformVersion: "11.0", 
+    //   browserName: 'Android',
+    //   appPackage: "com.dgotlieb.automationsample",
+    //   appActivity: "com.dgotlieb.automationsample.MainActivity",
+    //   deviceName: 'Samsung Galaxy A51',
+    //   automationName: 'UiAutomator2',
+    //   newCommandTimeout: "3000",
+    //   autoGrantPermissions: true,
+    //   capabilities:{
+    //     automationName: 'UiAutomator2'
     //   }
     // },
+
     Appium: {
-      host: "hub-cloud.browserstack.com",
-      port: 4444,
+      app: process.env.BS_APP,
       user: process.env.BROWSERSTACK_USER,
       key: process.env.BROWSERSTACK_KEY,
-      platform: "Android",
-      desiredCapabilities: {
-        app: process.env.BS_APP,
-        // app: "bs://ae486edbbccf9e3f21ef2ba37577f68e6f629e80",
-        appName: "com.dgotlieb.automationsample",
-        realMobile: "true",
-        device: "Samsung Galaxy A51",
-        os_version: "10.0"
-      }
+      host: "hub-cloud.browserstack.com",
+      port: 4444,
+      platform: "android",
+      device: "samsung galaxy a51"
     },
+    
     SetupBlocks: {
       require: './tests/helpers/setupblocks_helper.js'
     },
     TestHelper: {
       require: './tests/helpers/test_helper.js'
-    },
+    }
   },
 
   include: {

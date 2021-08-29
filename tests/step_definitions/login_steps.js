@@ -3,15 +3,16 @@ const TestHelper = require('../helpers/test_helper');
 
 
 Given('that app is open', () => {
-    console.log("pass");
+    // loginPage.openApp("com.dgotlieb.automationsample");
+    console.log("pass")
 });
 
-When('I provide wrong credentials', () => {
-    loginPage.typeInputUsername("wrong_user_name");
-    loginPage.typeInputPassword("wrong_pass_123");
+When('I provide wrong credentials', async () => {
+    await loginPage.typeInputUsername("wrong_user_name");
+    await loginPage.typeInputPassword("wrong_pass_123");
 });
 
-Then(/^I see "(.*)"/, (message) => {
-    loginPage.clickOnLogin(message);
+Then(/^I see "(.*)"/, async (message) => {
+    await loginPage.clickOnLogin(message);
 });
 
